@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["RenderBlazorTest/RenderBlazorTest.csproj", "RenderBlazorTest/"]
-RUN dotnet restore "RenderBlazorTest/RenderBlazorTest.csproj"
+COPY ["./RenderBlazorTest.csproj", "./"]
+RUN dotnet restore "./RenderBlazorTest.csproj"
 COPY . .
 WORKDIR "/src/RenderBlazorTest"
 RUN dotnet build "RenderBlazorTest.csproj" -c Release -o /app/build
