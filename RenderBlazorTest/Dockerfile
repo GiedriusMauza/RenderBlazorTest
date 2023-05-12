@@ -11,10 +11,10 @@ COPY ["./RenderBlazorTest.csproj", "./"]
 RUN dotnet restore "./RenderBlazorTest.csproj"
 COPY . .
 WORKDIR "/src/RenderBlazorTest"
-RUN dotnet build "RenderBlazorTest.csproj" -c Release -o /app/build
+RUN dotnet build "./RenderBlazorTest.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "RenderBlazorTest.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./RenderBlazorTest.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
